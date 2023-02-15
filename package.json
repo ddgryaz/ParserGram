@@ -4,11 +4,11 @@
   "description": "Parser of posts/messages from telegram channels/groups by keywords",
   "main": "src/index.ts",
   "scripts": {
-    "start": "cross-env IS_DEBUG=false ts-node -r tsconfig-paths/register src/index.ts",
-    "dev": "cross-env IS_DEBUG=true ts-node -r tsconfig-paths/register src/index.ts",
+    "start": "cross-env IS_DEBUG=false IS_PROD=false ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "cross-env IS_DEBUG=true IS_PROD=false ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
     "words": "touch wordsTriggers.json",
-    "prod": "rm -rf build && cross-env IS_PROD=true npm run build && pm2 start build/src/index.js --name=ParserGram"
+    "prod": "rm -rf build/ && npm run build && cross-env IS_DEBUG=false IS_PROD=true pm2 start build/src/index.js --name=ParserGram"
   },
   "author": "Dmitriy Dzyuman <telegram: @dimadzuman>",
   "license": "MIT",

@@ -10,14 +10,16 @@ dotenv.config();
 
 let stringSession: StringSession;
 
-if (debugMode()) {
-  Logger.warn("-- DEBUG MODE: TRUE. Search for an active session --");
-  stringSession = new StringSession(process.env.SESSION || "");
-} else if (productionMode()) {
+if (productionMode()) {
   Logger.warn("-- PRODUCTION MODE --");
   stringSession = new StringSession(process.env.SESSION || "");
 } else {
-  stringSession = new StringSession("");
+  if (debugMode()) {
+    Logger.warn("-- DEBUG MODE: TRUE. Search for an active session --");
+    stringSession = new StringSession(process.env.SESSION || "");
+  } else {
+    stringSession = new StringSession("");
+  }
 }
 
 const APISettings: IAPISettings = {
