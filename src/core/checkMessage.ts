@@ -10,7 +10,7 @@ export async function checkMessage(text: string, message: IMessage) {
 
   for (const word of wordsTriggers.words) {
     if (text.toLowerCase().includes(word)) {
-      Logger.info(`Message intercepted! id: ${message.id}`);
+      Logger.info(`Message intercepted! id: ${message.id}. Trigger: ${word}`);
       await messageDeliverer(message);
     }
   }
