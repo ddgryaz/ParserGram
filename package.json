@@ -1,6 +1,6 @@
 {
   "name": "parsergram",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parser of posts/messages from telegram channels/groups by keywords",
   "main": "src/index.ts",
   "scripts": {
